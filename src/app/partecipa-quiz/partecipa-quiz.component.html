@@ -18,9 +18,9 @@
 
 <div class="container" *ngIf=" showUserForm ;
 ">
+<app-login></app-login>
 
-
-    <app-guest-form div *ngIf="!showEnd" (playIdquiz)="mettiQuizId($event)"></app-guest-form>
+    <app-guest-form div *ngIf="isLoggedIn" (playIdquiz)="mettiQuizId($event)"></app-guest-form>
 
 
 </div>

@@ -18,6 +18,7 @@ import { Subscription, throwError } from 'rxjs';
 import { AnswerResponse } from '../dto/AnswerResponse';
 import { AuthService } from '../_services/auth.service';
 import { QuizService } from '../_services/quiz.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 export let browserRefresh = false;
 
@@ -31,9 +32,14 @@ export class PartecipaQuizComponent implements OnInit {
     private quizService: QuizService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+     private tokenStorage: TokenStorageService
   ) {}
-
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
   @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
     console.log('Processing beforeunload...');
     event.returnValue = false;
@@ -69,6 +75,10 @@ export class PartecipaQuizComponent implements OnInit {
     if (sessionStorage.getItem('auth-token') != null) {
       this.showForm = false;
       this.verita = true;
+    }
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
     }
 
     //      @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
