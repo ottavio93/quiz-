@@ -16,10 +16,11 @@
 ">partecipa al quiz</button>
 </div>
 
-<div class="container" *ngIf="showUserForm">
-    <app-login></app-login>
+<div class="container" *ngIf=" showUserForm && showForm ;
+">
+<app-login></app-login>
 
-    <app-guest-form *ngIf="isLoggedIn" (playIdquiz)="mettiQuizId($event)"></app-guest-form>
+    <app-guest-form div *ngIf="!showEnd" (playIdquiz)="mettiQuizId($event)"></app-guest-form>
 
 
 </div>
@@ -30,7 +31,7 @@
 </div>
 <div class="container" style="background-color: aliceblue;">
     <div class="card-container">
-        <div *ngFor="let question of listaDomande | slice:userIndex:userIndex+1; " style="  margin-left: 10%;
+        <div *ngFor="let question of listaDomande | slice:userIndex:userIndex+1; " style="margin-left: 8%;
     position: absolute;
     padding: 3em;
     width: 54em;
@@ -75,7 +76,7 @@
 
         <div *ngIf="showEnd" style="    z-index: -6;
     margin-top: -6%;
-    margin-left: 10%;
+    margin-left: 8%;
     background-color: transparent;
     height: 3em;
     position: absolute;
