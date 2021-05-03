@@ -69,12 +69,12 @@ export class PartecipaQuizComponent implements OnInit {
   @ViewChild('cnt') counter!: CountdownComponent;
 
   ngOnInit(): void {
-    if (this.tokenStorage.getUser().roles == null) {
+    if (sessionStorage.getItem('auth-token')== null) {
       this.showUserForm = true;
     
     }
     if (this.tokenStorage.getUser().roles != "ROLE_USER") {
-      this.showForm = false;
+   
       this.verita = true;
     }
     if (sessionStorage.getItem('auth-token') != null) {
