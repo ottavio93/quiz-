@@ -73,10 +73,10 @@ export class PartecipaQuizComponent implements OnInit {
      
     
     }
-    if (this.tokenStorage.getUser().roles != "ROLE_USER") {
+    // if (this.tokenStorage.getUser().roles != "ROLE_USER") {
    
-      this.verita = true;
-    }
+    //   this.verita = true;
+    // }
     if (sessionStorage.getItem('auth-token') != null) {
 
       this.isLoggedIn = true;
