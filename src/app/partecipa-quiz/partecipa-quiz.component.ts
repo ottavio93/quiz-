@@ -60,7 +60,7 @@ export class PartecipaQuizComponent implements OnInit {
   submitted = false;
   Counter = 5;
   showForm = true;
-  showUserForm = false;
+  showUserForm = true;
   quiId!: any;
   listaDomande!: any;
   status = 'start';
@@ -78,7 +78,7 @@ export class PartecipaQuizComponent implements OnInit {
       this.verita = true;
     }
     if (sessionStorage.getItem('auth-token') != null) {
-      
+
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
