@@ -80,7 +80,7 @@ export class PartecipaQuizComponent implements OnInit {
     if (sessionStorage.getItem('auth-token') != null) {
 
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+      // this.roles = this.tokenStorage.getUser().roles;
     }
 
     //      @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
