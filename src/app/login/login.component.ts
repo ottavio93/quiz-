@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  isUserQuiz=true
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
@@ -40,6 +41,9 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = true;
       }
     );
+    if (this.roles[0]=="ROLE_USER"){
+      this.isUserQuiz=false
+    }
   }
 
   reloadPage(): void {
