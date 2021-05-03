@@ -24,20 +24,25 @@
       <li class="bottone" *ngIf="showModeratorBoard">
         <a href="/mod" class="nav-link" routerLink="mod" routerLinkActive="active">Moderator Board</a>
       </li>
+
+      <li class="bottone" *ngIf="showModeratorBoard">
+        <a href="/mod" class="nav-link" routerLink="aggiungi-utente" routerLinkActive="active">Moderator Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showModeratorBoard">
+        <a class="nav-link" routerLink="/quizUserReport" routerLinkActive="active">{{ username }} reports</a>
+      </li>
+      <li class="nav-item">
+        <a href="/user" class="nav-link" *ngIf="showModeratorBoard" routerLink="user"routerLinkActive="active"> {{ username }} quiz </a>
+      </li>
+
       <li class="nav-item" *ngIf="showAdminBoard">
         <a  class="nav-link"  routerLink="/quizReport" routerLinkActive="active">all reports</a>
       </li>
      
-      <li class="nav-item">
-        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user"routerLinkActive="active"> {{ username }} quiz </a>
-      </li>
+   
 
-      <li class="nav-item" *ngIf="isLoggedIn">
-        <a class="nav-link" routerLink="/quizUserReport" routerLinkActive="active">{{ username }} reports</a>
-      </li>
-      <li class="nav-item" *ngIf="isLoggedIn">
-        <a class="nav-link" routerLink="/aggiungi-utente" routerLinkActive="active">aggiungi-utent</a>
-      </li>
+
+   
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn && dati ">
