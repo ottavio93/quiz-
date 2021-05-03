@@ -1,0 +1,94 @@
+<!-- 
+<ul>
+    <button (click)="aum() ">daiii suuu</button>
+    <li *ngFor="let element of listaDomande| slice:0:1;">
+{{listaDomande[userIndex].question}}
+    </li>
+    <h4> </h4>
+  
+</ul>
+<div style="padding: 8em;">bhooo</div> -->
+<div id="time">
+
+</div>
+<div *ngIf="!showEnd">
+    <button (click)="mostraForm()" class="button" *ngIf=" !showForm ;
+">partecipa al quiz</button>
+</div>
+
+<div class="container" *ngIf=" showUserForm ;
+">
+
+
+    <app-guest-form div *ngIf="!showEnd" (playIdquiz)="mettiQuizId($event)"></app-guest-form>
+
+
+</div>
+
+
+<div *ngIf="playIdQuizRes!=null || verita">
+    <button *ngIf="!showEnd" (click)="quiz()" class="button">inizia il quiz</button>
+</div>
+<div class="container" style="background-color: aliceblue;">
+    <div class="card-container">
+        <div *ngFor="let question of listaDomande | slice:userIndex:userIndex+1; " style="margin-top: 3%;
+    position: absolute;
+    padding: 3em;
+    width: 54em;
+    display: absolute;
+    background-color: aliceblue; ">
+            <div style="width: 60%">
+
+                <!-- <h4>{{listaDomande.length}} </h4> -->
+                <countdown #cnt [config]="{leftTime: listaDomande[userIndex].tempo, notify: [ 2, 5 ]}" style=" float: right;
+    margin-right: -16em;">$!m!:$!s!</countdown>
+                <br>
+
+
+                <h4> {{listaDomande[userIndex].question}} </h4>
+            </div>
+            <app-play-risposte (rispostaChanged)="doSomething($event)" [parentData]="listaDomande[userIndex].questionId"
+                style=" margin:1em; margin-left: 1em;">
+
+            </app-play-risposte>
+
+            <div style="float:right;    margin-left: 36em;">
+
+
+                <button (click)="onSubmit(listaDomande[userIndex].questionId,cnt.left)">submit</button>
+
+
+
+            </div>
+
+
+
+
+
+            <section class="example-section">
+
+
+
+            </section>
+
+        </div>
+
+
+        <div *ngIf="showEnd" style="    z-index: -6;
+    margin-top: -6%;
+    background-color: transparent;
+    height: 3em;
+    position: absolute;
+    margin: auto;
+    width: 40%;
+    height: 20em;
+    padding: 3em;
+    height: 25em;
+    display: absolute;
+   ">
+            Grazie per aver partecipato al quiz verrai ricontattato al più presto per aggiornamenti
+        </div>
+    </div>
+
+
+</div>

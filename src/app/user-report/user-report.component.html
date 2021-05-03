@@ -1,0 +1,39 @@
+<div class="container" *ngIf="sho"
+    style="padding-left: 0em;padding-right: 0em;  width: 100%;     margin-left: -9%;   margin-left: -4%;  ">
+
+
+    <table style="   ">
+
+        <thead>
+
+            <tr style=" display: contents ;position:fixed ;">
+                <th>nome</th>
+                <th>cognome</th>
+
+                <th>Email</th>
+                <th>punteggioTecnico</th>
+                <th>giudizioPsicologico</th>
+                <th>giudizioglobale</th>
+                <th>approvato</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of allReports ;  let numb of allPunteggio; index as i
+            " [routerLink]="['/detailquizReport', item.playQuizId]">
+                <td>{{ item.nome }}</td>
+                <td>{{ item.cognome }}</td>
+
+                <td>{{ item.email }}</td>
+
+                <td>{{ item.punteggioTecnico }}/{{item.total}}</td>
+                <td>{{ item.giudizioPsicologico }}</td>
+                <td>{{ item.giudizioGlobale }}</td>
+                <td *ngIf="item.approvato">vero</td>
+                <td *ngIf="!item.approvato">falso</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+

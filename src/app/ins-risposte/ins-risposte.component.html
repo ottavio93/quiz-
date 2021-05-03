@@ -1,0 +1,45 @@
+<!-- {{diagnostic}}  -->
+<div [hidden]="submitted">
+
+    <div class="domandecontainer">
+        <div [hidden]="submitted">
+            <form (ngSubmit)="onSubmit()" #answerForm="ngForm">
+
+                <div class="form-group">
+
+                    <textarea class="form-control" id="question"  required [(ngModel)]="answerModel.answer"
+                        name="question" placeholder=" contenuto risposta">
+                        </textarea>
+                </div>
+
+                <div class="form-group" style="display: inline-flex;     width: 62%;">
+                    <select class="form-control" id="corretta" required [(ngModel)]="answerModel.corretta" style="    width: 59%;"
+                        name="corrette">
+                        <option *ngFor="let pow of corrette">{{pow}}</option>
+                    </select>
+                    <button type="submit" class="btn btn-success" style="     margin-left:1em;
+    height: fit-content;
+    width: -webkit-fill-available;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;">inserisci risposta</button>
+                    <button type="submit" class="btn btn-success" style="    margin-left: 1em;
+    height: fit-content;
+  width: 112%;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;"
+                        (click)="onSubmitVoid()">inserisci risposta aperta</button>
+                  
+                </div>
+
+
+
+
+
+
+
+
+
+            </form>
+        </div>
+    </div>
+</div>

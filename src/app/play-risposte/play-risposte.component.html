@@ -1,0 +1,63 @@
+<div *ngIf="(risposte!=undefined)">
+    <div *ngIf="(risposte.length==1)">
+        <textarea (change)="getRisposta(value)" id="txtArea" rows="10" cols="70" class="input"
+            placeholder="inserisci risposta" [(ngModel)]="value">Default value</textarea>
+
+    </div>
+    <div *ngIf="(risposte.length!=1&&domanda.rispostaMultipla!=true)">
+        <div *ngFor="let risposta of risposte; index as i; first as isFirst">
+
+
+
+
+
+
+
+            <div style="     border-radius: 1em;
+    background-color: #337ab799;
+    padding: 0.41em;
+        padding-top: 1em;
+    margin-bottom: 1.2em;
+    width: fit-content;    ">
+                <!-- <input type="checkbox" id="vehicle1" name="vehicle1" onChange="valueChange(this)" value="0"> -->
+
+                <mat-radio-button (click)="getRisposta(risposta.answer)">
+                    <div style="max-width: 52em; white-space: pre-line;">
+                        <p style="word-wrap: break-word;white-space: pre-line;">{{risposta.answer}}</p>
+                    </div>
+                </mat-radio-button>
+
+
+            </div>
+        </div>
+    </div>
+    <div *ngIf="(risposte.length!=1&&domanda.rispostaMultipla==true)">
+        <div>scegli piu risposte corrette</div>
+        <div *ngFor="let risposta of risposte; index as i; first as isFirst" style="padding-top: 1em;">
+
+
+
+
+
+
+
+            <div style="     border-radius: 1em;
+    background-color: #337ab799;
+    padding: 0.41em;
+        padding-top: 1em;
+    margin-bottom: 1.2em;
+    width: fit-content;    ">
+                <!-- <input type="checkbox" id="vehicle1" name="vehicle1" onChange="valueChange(this)" value="0"> -->
+                <div *ngIf="!inserita"></div>
+                <mat-checkbox (click)="   onClick(risposta.answer)">
+                    <div style="max-width: 52em; white-space: pre-line;">
+                        <p style="word-wrap: break-word;white-space: pre-line;">{{risposta.answer}}</p>
+                    </div>
+                </mat-checkbox>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

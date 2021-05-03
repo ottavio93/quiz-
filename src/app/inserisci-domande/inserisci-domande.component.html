@@ -1,0 +1,117 @@
+<div style="margin-top: 1em;" class="container">
+    <!-- {{diagnostic}}  -->
+
+    <div style="   margin-bottom: 6em;
+    "><h1 style="display: contents;"> Tipoquiz: {{tipo.argomento}}</h1>
+        <button style="float: right;margin-right: 1em;    margin-left: 1em;" class="botton" (click)="backClicked()">
+           
+            indietro
+        </button>
+     
+       
+  
+
+        <div style="float: right; ">
+    <button *ngIf="mostra2" (click)="updateNAME()">cambia nome</button>
+    <input *ngIf="mostra2" type="text" [(ngModel)]="tipoQuizRequest.argomento" name="argomento">
+            <div class="dropdown">
+
+                <button class="dropbtn">modifica</button>
+                <div class="dropdown-content">
+
+                    <button (click)="show2() ">cambia nome</button>
+                    <button (click)="tipoQuizdelete() ">cancella tipo quiz</button>
+                </div>
+            </div>
+          
+
+
+        </div>
+    </div>
+
+
+
+    <div [hidden]="submitted" style="background-color: #59798147;
+    padding: 1em;
+    margin-bottom: 0.2em;">
+        <div class="domandecontainer">
+            <h1>inserisci domande</h1>
+            <form (ngSubmit)="onSubmit()" #questionForm="ngForm">
+                <div class="form-group">
+                    <label for="question"> contenuto domanda</label>
+                    <input type="text" class="form-control" id="question" required [(ngModel)]="questionModel.question"
+                        name="question">
+
+                </div>
+
+                <div class="form-group" style="display: inline-flex;">
+                    <div>
+                        <label for="name">tempo domanda</label>
+                        <input style="width: 11em;" id="settime" type="time" step="1" class="form-control" id="tempo"
+                            [(ngModel)]="questionModel.tempo" name="tempo">
+                    </div>
+                    <div>
+                        <label for="punteggio">punteggio domanda</label>
+                        <input style="width: 11em;" id="punteggio" type="number" step="1" class="form-control"
+                            id="punteggio" required [(ngModel)]="questionModel.punteggio" name="punteggio">
+                    </div>
+                </div>
+                <div class="form-group">
+
+
+
+                </div>
+
+
+
+
+                <button type="submit" class="btn btn-success"
+                    [disabled]="!questionForm.form.valid">inserisciDomande</button>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="container ">
+    <div class="card-container" style="margin-top: -1em;">
+
+        <div *ngFor="let question of allQuestion">
+            <div style="
+                margin-bottom: 0.2em;">
+                <a class="card" rel="noopener" style="background-color: #337ab73b;
+    padding: 0.5em;">
+                    <button (click)="deleteQuestion(question.questionId) " style="float: right; margin-left: 97%;"
+                        class="x">x</button>
+
+                    <h3 style=" margin:1em;     margin-block: auto;">{{question.question}} </h3>
+
+                    <!-- <h4>{{question.questionId}} </h4> -->
+
+                    <div style=" margin:1em; margin-left: 1em;">
+                        <app-tutte-risposte [parentData]="question.questionId" style=" margin:1em; margin-left: 1em;">
+
+                        </app-tutte-risposte>
+                        <app-ins-risposte [parentData]="question.questionId"></app-ins-risposte>
+                    </div>
+
+                </a>
+            </div>
+
+        </div>
+
+    </div>

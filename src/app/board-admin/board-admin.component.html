@@ -1,0 +1,43 @@
+<div class="container" style="    margin-top: 9em;" >
+  <div class="card-container">
+   
+  </div>
+
+  <div style="    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);">
+  <h1 style="text-align: center;
+    vertical-align: middle;
+    color: #0062cc;
+    margin: auto;
+    
+    padding: 0em;"> Quiz di tutti gli utenti</h1>
+
+<div style="    padding-left: 82%;">
+
+  <button routerLink="/uploadQuiz" class="button" >aggiungi quiz</button>
+
+</div>
+
+
+  <div class="card-container">
+
+
+
+    <div *ngFor="let post of quiz;">
+
+      <div class="card" style="padding: 2em; height: 13em;   background-color: #59798147;"
+        [routerLink]="['/quizDetails', post.quizId]">
+        <h3>{{post.nome}} </h3>
+
+        <p> utente: {{post.user.username}}</p>
+
+        <p>difficoltà: {{post.seniority}}</p>
+
+      </div>
+
+    </div>
+</div>
+
+
+  </div>
+
+</div>

@@ -1,0 +1,42 @@
+
+<div class="container">
+
+    <div class="container" style="width: 33em;">
+
+        <div [hidden]="submitted">
+            <h1>dati utente</h1>
+            <form (ngSubmit)="onSubmit()" #quizForm="ngForm">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="model.nome" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="name">Cognome</label>
+                    <input type="text" class="form-control" id="cognome" required [(ngModel)]="model.cognome"
+                        name="cognome">
+                </div>
+                <div class="form-group">
+                    <label for="name">Email</label>
+                    <input type="email" name="email" email="true" class="form-control" id="name" required
+                        [(ngModel)]="model.email" name="email">
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <button class="button" [disabled]="!quizForm.form.valid" (click)="onSubmit()"
+                    style="margin-top: 11em; z-index: 1;">
+                    inserisci credenziali</button>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+.bottone {
+  background-color: transparent;
+  border: none;
+  color: rgb(202, 192, 192);
+}
+.bottone.active {
+  border: none;
+  color: rgb(26, 16, 117);
+}

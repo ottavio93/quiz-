@@ -1,0 +1,50 @@
+
+<!-- {{diagnostic}} -->
+<div class="container">
+    <button style="float: right; margin-right: 3em;" class="botton"  (click)="backClicked()">
+        <span class="fa fa-arrow-left"></span>
+        indietro
+    </button>
+    <div class="container">
+
+        <div [hidden]="submitted">
+            <h1>quiz Form</h1>
+            <form  #quizForm="ngForm">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="model.nome" name="name">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="power">Seniority</label>
+                    <select class="form-control" id="power" required [(ngModel)]="model.difficolta" name="power"
+                        #power="ngModel">
+                        <option *ngFor="let pow of difficolta" [value]="pow">{{pow}}</option>
+                    </select>
+                    <div [hidden]="power.valid || power.pristine" class="alert alert-danger">
+                        Power is required
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-group">
+                    <label for="alterEgo">description</label>
+                    <input type="text" class="form-control" id="alterEgo" [(ngModel)]="model.description"
+                        name="alterEgo">
+                </div>
+
+
+
+                <button type="submit" type="button" class="btn btn-success" [disabled]="!quizForm.form.valid" (click)="onSubmit()"
+                    [routerLink]="['/quizDetails',quizIdRandom]">inserisciQuiz</button>
+
+            </form>
+
+        </div>
+    </div>
+</div>

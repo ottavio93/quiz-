@@ -1,0 +1,22 @@
+.button {
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  -ms-transform: translateY(-50%);
+
+  width: 14em;
+  margin: auto;
+  background-color: #3f51b5;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  /* margin: 4px 2px; */
+
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}

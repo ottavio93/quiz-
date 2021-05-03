@@ -1,0 +1,101 @@
+
+<button style="    color: #f8f9fa;
+    float: right;
+    /* margin-right: 1em; */
+    border: none;
+    padding: 0.4em;
+    box-shadow: none;
+    margin-bottom: 1em;
+    background-color: #3b59a0;" class="botton" (click)="backClicked()">
+    <span class="fa fa-arrow-left"></span>
+    indietro
+</button>
+
+<h2>quiz: {{titoloquiz}}</h2>
+
+<div style="     padding-left: 0em;
+    padding-right: 0em;
+ 
+
+    margin-top: 1em;
+">
+
+
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>domanda</th>
+                <th>risposta</th>
+
+                <th>tempo</th>
+                <th>corretta</th>
+                <th>punteggio</th>
+
+            </tr>
+        </thead>
+
+
+  
+
+            <tr *ngFor="let item of allAnswer">
+
+                <td>{{ item.question.question }}</td>
+                <td>{{ item.answer }}</td>
+                <td>{{ item.tempo }}</td>
+
+
+                <td> <button (click)="onTrue(item.playAnswerId,item.question.questionId)" *ngIf="item.corretta">vero</button>
+                    <button (click)="onTrue(item.playAnswerId,item.question.questionId)" *ngIf="!item.corretta">falso</button></td>
+
+                <td>{{ item.punteggio }}</td>
+
+
+
+            </tr>
+       
+    </table>
+
+
+
+
+
+
+
+
+    <div style="background-color: #59798147;
+                                padding: 1em;
+                                margin-bottom: 0.2em;">
+        <div class="domandecontainer">
+
+            <form #questionForm="ngForm">
+                <div class="form-group">
+                    <label for="question"> giudizio psicologico</label>
+                    <input type="text" class="form-control" id="question" required [(ngModel)]="risposta"
+                        name="risposta">
+
+                </div>
+                <button (click)="onSubmit()">inserisci</button>
+            </form>
+        </div>
+    </div>
+    <div style="background-color: #59798147;
+                                        padding: 1em;
+                                        margin-bottom: 0.2em;">
+        <div class="domandecontainer">
+
+            <form #questionForm="ngForm">
+                <div class="form-group">
+                    <label for="question"> giudizio Globale</label>
+                    <input type="text" class="form-control" id="question" required [(ngModel)]="risposta2"
+                        name="risposta2">
+
+                </div>
+                <button (click)="onSubmitGlobal()">inserisci</button>
+
+                <button (click)="approvato()"> approva test</button>
+            </form>
+        </div>
+    </div>
+</div>
