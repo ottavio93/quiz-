@@ -18,7 +18,7 @@ export class AggiungiUtenteQuizComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(): void {
-    this.authService.register(this.form).subscribe(
+    this.authService.registerUser(this.form).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
