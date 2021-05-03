@@ -31,7 +31,7 @@
 </div>
 <div class="container" style="background-color: aliceblue;">
     <div class="card-container">
-        <div *ngFor="let question of listaDomande | slice:userIndex:userIndex+1; " style="margin-top: 3%;
+        <div *ngFor="let question of listaDomande | slice:userIndex:userIndex+1; " style="  margin-left: 10%;
     position: absolute;
     padding: 3em;
     width: 54em;
@@ -55,7 +55,7 @@
             <div style="float:right;    margin-left: 36em;">
 
 
-                <button (click)="onSubmit(listaDomande[userIndex].questionId,cnt.left)">submit</button>
+                <button (click)="onSubmit(listaDomande[userIndex].questionId,cnt.left)">inserisci risposta</button>
 
 
 
@@ -76,6 +76,7 @@
 
         <div *ngIf="showEnd" style="    z-index: -6;
     margin-top: -6%;
+    margin-left: 10%;
     background-color: transparent;
     height: 3em;
     position: absolute;
