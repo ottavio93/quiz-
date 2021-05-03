@@ -70,7 +70,7 @@ export class PartecipaQuizComponent implements OnInit {
 
   ngOnInit(): void {
     if (sessionStorage.getItem('auth-token')== null) {
-      this.showUserForm = true;
+     
     
     }
     if (this.tokenStorage.getUser().roles != "ROLE_USER") {
@@ -78,6 +78,7 @@ export class PartecipaQuizComponent implements OnInit {
       this.verita = true;
     }
     if (sessionStorage.getItem('auth-token') != null) {
+      
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
