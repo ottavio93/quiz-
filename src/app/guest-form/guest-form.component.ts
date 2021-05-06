@@ -36,6 +36,7 @@ export class GuestFormComponent
     }
     return true;
   }
+  mostraformcredenziali=true
   onereload = false;
   quizForm!: FormGroup;
   playQuizIdRandom = this.randomId();
@@ -66,6 +67,8 @@ export class GuestFormComponent
       throwError(error);
       console.log(this.model);
     });
+  this.mostraformcredenziali=false
+
   }
 
   randomId() {
