@@ -27,9 +27,9 @@ export class AppComponent implements OnInit {
 
       this.username = user.username;
     }
-    if (localStorage.getItem('sss') != null) {
-      this.dati = false;
-    }
+    // if (localStorage.getItem('sss') != null) {
+    //   this.dati = false;
+    // }
   }
 
   logout(): void {

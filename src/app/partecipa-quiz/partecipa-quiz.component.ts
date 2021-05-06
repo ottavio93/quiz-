@@ -40,6 +40,8 @@ export class PartecipaQuizComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  showAdminBoard = false;
+  showModeratorBoard = false;
   @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
     console.log('Processing beforeunload...');
     event.returnValue = false;
@@ -66,9 +68,35 @@ export class PartecipaQuizComponent implements OnInit {
   status = 'start';
   verita = false;
   userIndex = 0;
+mostraform1=false
+  isUserQuiz=true
   @ViewChild('cnt') counter!: CountdownComponent;
 
   ngOnInit(): void {
+
+    this.isLoggedIn = !!this.tokenStorage.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorage.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+      this.username = user.username;
+    }
+
+
+
+
+
+
+
+
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+    }
     if (sessionStorage.getItem('auth-token')== null) {
      
     
@@ -117,6 +145,9 @@ export class PartecipaQuizComponent implements OnInit {
           console.log(data);
 
           this.listaDomande = data;
+             this.listaDomande.push("fdfdfd")
+          localStorage.setItem('dataSource', '3');
+          console.log(      this.listaDomande );
           // localStorage.setItem('dataSource', '3');
         });
       });
@@ -148,8 +179,9 @@ export class PartecipaQuizComponent implements OnInit {
           console.log(data);
 
           this.listaDomande = data;
-
+          this.listaDomande.push("fdfdfd")
           localStorage.setItem('dataSource', '3');
+          console.log(      this.listaDomande );
         });
       });
       this.show = false;
@@ -218,4 +250,30 @@ export class PartecipaQuizComponent implements OnInit {
   aum() {
     this.userIndex++;
   }
+  onSubmitLogin(): void {
+    this.mostraform1=true;
+    this.authService.login(this.form).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+      
+        this.mostraform1=true;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    );
+    if (this.roles[0]=="ROLE_USER"){
+      this.isUserQuiz=false
+    }
+    this.mostraform1=true;
+  }
+
+  
+
 }
