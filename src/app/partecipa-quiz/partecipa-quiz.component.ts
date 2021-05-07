@@ -42,10 +42,10 @@ export class PartecipaQuizComponent implements OnInit {
   roles: string[] = [];
   showAdminBoard = false;
   showModeratorBoard = false;
-  @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
-    console.log('Processing beforeunload...');
-    event.returnValue = false;
-  }
+  // @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
+  //   console.log('Processing beforeunload...');
+  //   event.returnValue = false;
+  // }
 
   // @HostListener('window:beforeunload', ['$event'])
   // unloadNotification($event: any) {
@@ -97,14 +97,8 @@ mostraform1=false
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
-    if (sessionStorage.getItem('auth-token')== null) {
-     
-    
-    }
-    // if (this.tokenStorage.getUser().roles != "ROLE_USER") {
-   
-    //   this.verita = true;
-    // }
+
+  
     if (sessionStorage.getItem('auth-token') != null) {
 
       this.isLoggedIn = true;
@@ -114,7 +108,30 @@ mostraform1=false
     //      @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
     // this.countdown.begin();
   }
+  onSubmitLogin(): void {
+ 
+    this.authService.login(this.form).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
 
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+      
+        this.mostraform1=true;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+        this.isLoggedIn = false;
+      }
+    );
+    if (this.roles[0]=="ROLE_USER"){
+      this.isUserQuiz=false
+    }
+
+  }
   mostraForm() {
     return (this.showForm = true);
   }
@@ -133,7 +150,7 @@ mostraform1=false
   }
 
   quiz() {
-    this.showEnd = true;
+ 
     if (sessionStorage.getItem('auth-token') != null) {
       console.log('invia quiz');
       this.route.params.subscribe((params: Params) => {
@@ -145,7 +162,7 @@ mostraform1=false
           console.log(data);
 
           this.listaDomande = data;
-             this.listaDomande.push("fdfdfd")
+             
           localStorage.setItem('dataSource', '3');
           console.log(      this.listaDomande );
           // localStorage.setItem('dataSource', '3');
@@ -158,9 +175,11 @@ mostraform1=false
         console.log(this.quiId);
 
         this.quizService.getAllQuestionQuiz(this.quiId).subscribe((data) => {
-          console.log(data);
+        
 
           this.listaDomande = data;
+         
+            console.log(this.listaDomande);
           // localStorage.setItem('dataSource', '3');
         });
       });
@@ -179,7 +198,7 @@ mostraform1=false
           console.log(data);
 
           this.listaDomande = data;
-          this.listaDomande.push("fdfdfd")
+          
           localStorage.setItem('dataSource', '3');
           console.log(      this.listaDomande );
         });
@@ -235,7 +254,7 @@ mostraform1=false
       console.log(this.answerResponse);
     });
     this.userIndex++;
-
+this.showEnd=true
     // console.log((this.counter.event.isStopped = true));
 
     // this.listaDomande[i - 1].tempo;
@@ -250,29 +269,7 @@ mostraform1=false
   aum() {
     this.userIndex++;
   }
-  onSubmitLogin(): void {
-    this.mostraform1=true;
-    this.authService.login(this.form).subscribe(
-      data => {
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUser(data);
-
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
-      
-        this.mostraform1=true;
-      },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
-      }
-    );
-    if (this.roles[0]=="ROLE_USER"){
-      this.isUserQuiz=false
-    }
-    this.mostraform1=true;
-  }
+ 
 
   
 
