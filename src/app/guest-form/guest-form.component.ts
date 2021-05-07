@@ -9,9 +9,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { CanDeactivate, Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import { throwError } from 'rxjs';
+import { EnableUserRequest } from '../dto/EnableUserRequest';
 import { PlayQuizResponse } from '../dto/PlayQuiz';
+import { AuthService } from '../_services/auth.service';
 import { ComponentCanDeactivate } from '../_services/ComponentCanDeactivate';
 import { QuizService } from '../_services/quiz.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-guest-form',
@@ -40,11 +43,15 @@ export class GuestFormComponent
   onereload = false;
   quizForm!: FormGroup;
   playQuizIdRandom = this.randomId();
+  nome=""
+  model2=null
   constructor(
     private router: Router,
     public fb: FormBuilder,
     private quizService: QuizService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private authService :AuthService,
+    private tokenStorage: TokenStorageService
   ) {}
   username = this.localStorage.retrieve('userName');
   ngOnInit() {
@@ -52,15 +59,21 @@ export class GuestFormComponent
       localStorage.setItem('sss', '4');
       location.reload();
     }
+    this.nome = this.tokenStorage.getUser().username;
+    console.log(this.nome)
+    this.model2=new EnableUserRequest(this.nome);
+
   }
 
   model = new PlayQuizResponse(this.playQuizIdRandom, '', '', '');
+  
 
   submitted = false;
 
   onSubmit() {
     this.submitted = true;
     console.log(this.playQuizIdRandom);
+    console.log(this.model2);
     this.playIdquiz.emit(this.playQuizIdRandom);
     this.quizService.putPlayQuiz(this.model).subscribe((error) => {
       this.ngOnInit();
@@ -68,6 +81,7 @@ export class GuestFormComponent
       console.log(this.model);
     });
   this.mostraformcredenziali=false
+  this.stateChange(-1)
 
   }
 
@@ -81,4 +95,17 @@ export class GuestFormComponent
   get diagnostic() {
     return JSON.stringify(this.model);
   }
+
+
+
+  stateChange(newState) {
+    setTimeout(function () {
+        if (newState == -1) {
+          this.authService.disableUser(this.model2).subscribe((data)=>{
+            console.log(data);
+            console.log(this.model2);
+          });
+        }
+    }, 15000);
+}
 }

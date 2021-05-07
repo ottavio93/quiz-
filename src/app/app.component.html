@@ -21,11 +21,11 @@
       <li class="bottone" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin" routerLinkActive="active">tutti i quiz </a>
       </li>
-      <li class="bottone" *ngIf="showModeratorBoard">
+      <li class="bottone" *ngIf="showModeratorBoard || showAdminBoard">
         <a href="/mod" class="nav-link" routerLink="mod" routerLinkActive="active">utenti</a>
       </li>
 
-      <li class="bottone" *ngIf="showModeratorBoard">
+      <li class="bottone" *ngIf="showModeratorBoard || showAdminBoard">
         <a href="/mod" class="nav-link" routerLink="aggiungi-utente" routerLinkActive="active">aggiungi-utente</a>
       </li>
       <li class="nav-item" *ngIf="showModeratorBoard">
