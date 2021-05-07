@@ -48,7 +48,7 @@
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn && dati " routerLinkActive="active">
       
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login"routerLinkActive="active">Login</a>
+        <a href="/login" class="nav-link"   *ngIf="datasource"            routerLink="login"routerLinkActive="active">Login</a>
       </li>
     </ul>
 
