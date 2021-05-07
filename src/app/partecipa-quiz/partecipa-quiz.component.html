@@ -9,70 +9,44 @@
 </ul>
 <div style="padding: 8em;">bhooo</div> -->
 
-<div style="background-color: red;width: 100%;height: 20%;z-index: 3;"></div>
+<!-- <div style="    color: whitesmoke;
+top: 2%;
+/* left: 18%; */
+background-color: #f5f5f5;
+width: 100%;
+height: 7%;
+z-index: 3;
+position: absolute;">dgfgdfgdf</div> -->
 <div id="time">
 
 </div>
 <div *ngIf="showModeratorBoard">
-    <button (click)="mostraForm()" class="button"
->invia il quiz</button>
-<div style="    margin: auto;
+  <button (click)="mostraForm()" class="button">invia il quiz</button>
+  <div style="    margin: auto;
 left: 40%;
 top: 31%;
 position: absolute;">invia il quiz per email copiando l'url</div>
 
 </div>
 
-<div class="container" *ngIf="!mostraform1"
->
-<div class="col-md-12"    *ngIf="!isLoggedIn">
+<div class="container" *ngIf="  !showModeratorBoard && !showAdminBoard ">
+  <div class="col-md-12">
     <div class="card card-container" *ngIf="!mostraform1">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <form
-        *ngIf="!isLoggedIn"
-        name="form"
-        (ngSubmit)="f.form.valid && onSubmitLogin()"
-        #f="ngForm"
-        novalidate
-      >
+      <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+      <form name="form" (ngSubmit)="f.form.valid && onSubmitLogin()" #f="ngForm" novalidate>
         <div class="form-group">
           <label for="username">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            name="username"
-            [(ngModel)]="form.username"
-            required
-            #username="ngModel"
-          />
-          <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="f.submitted && username.invalid"
-          >
+          <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
+            #username="ngModel" />
+          <div class="alert alert-danger" role="alert" *ngIf="f.submitted && username.invalid">
             Username is required!
           </div>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            name="password"
-            [(ngModel)]="form.password"
-            required
-            minlength="6"
-            #password="ngModel"
-          />
-          <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="f.submitted && password.invalid"
-          >
+          <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
+            #password="ngModel" />
+          <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
             <div *ngIf="password.errors.required">Password is required</div>
             <div *ngIf="password.errors.minlength">
               Password must be at least 6 characters
@@ -85,77 +59,73 @@ position: absolute;">invia il quiz per email copiando l'url</div>
           </button>
         </div>
         <div class="form-group">
-          <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="f.submitted && isLoginFailed"
-          >
+          <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
             Login failed: {{ errorMessage }}
           </div>
         </div>
       </form>
-   </div>
+    </div>
   </div>
 </div>
 
 
 
 
-<div *ngIf="mostraform1">
-    <app-guest-form  (playIdquiz)="mettiQuizId($event)"></app-guest-form>
+<div *ngIf="mostraform1 && !showModeratorBoard && !showAdminBoard ">
+  <app-guest-form (playIdquiz)="mettiQuizId($event)"></app-guest-form>
 </div>
 
 
 
 <div *ngIf="playIdQuizRes!=null || verita">
-    <button *ngIf="!showEnd" (click)="quiz()" class="button">inizia il quiz</button>
+  <button *ngIf="!showEnd" (click)="quiz()" class="button">inizia il quiz</button>
 </div>
 <div class="container" style="background-color: aliceblue;">
-    <div class="card-container">
-        <div *ngFor="let question of listaDomande | slice:userIndex:userIndex+1; " style="margin-left: 8%;
+  <div class="card-container">
+    <div *ngFor="let question of listaDomande | slice:userIndex:userIndex+1; " style="margin-left: 8%;
     position: absolute;
     padding: 3em;
     width: 54em;
     display: absolute;
     background-color: aliceblue; ">
-            <div style="width: 60%">
+      <div style="width: 60%">
 
-                <!-- <h4>{{listaDomande.length}} </h4> -->
-                <countdown #cnt [config]="{leftTime: listaDomande[userIndex].tempo, notify: [ 2, 5 ]}" style=" float: right;
+        <!-- <h4>{{listaDomande.length}} </h4> -->
+        <countdown #cnt [config]="{leftTime: listaDomande[userIndex].tempo, notify: [ 2, 5 ]}" style=" float: right;
     margin-right: -16em;">$!m!:$!s!</countdown>
-                <br>
+        <br>
 
 
-                <h4> {{listaDomande[userIndex].question}} </h4>
-            </div>
-            <app-play-risposte (rispostaChanged)="doSomething($event)" [parentData]="listaDomande[userIndex].questionId"
-                style=" margin:1em; margin-left: 1em;">
+        <h4> {{listaDomande[userIndex].question}} </h4>
+      </div>
+      <app-play-risposte (rispostaChanged)="doSomething($event)" [parentData]="listaDomande[userIndex].questionId"
+        style=" margin:1em; margin-left: 1em;">
 
-            </app-play-risposte>
+      </app-play-risposte>
 
-            <div style="float:right;    margin-left: 36em;">
-
-
-                <button (click)="onSubmit(listaDomande[userIndex].questionId,cnt.left)">inserisci risposta</button>
+      <div style="float:right;    margin-left: 36em;">
 
 
-
-            </div>
+        <button (click)="onSubmit(listaDomande[userIndex].questionId,cnt.left)">inserisci risposta</button>
 
 
 
+      </div>
 
 
-            <section class="example-section">
 
 
 
-            </section>
-
-        </div>
+      <section class="example-section">
 
 
-        <div *ngIf="showEnd" style="    z-index: -6;
+
+      </section>
+
+    </div>
+
+
+    <div *ngIf="showEnd" style="    z-index: -6;
 
     margin-left: 10%;
     background-color: transparent;
@@ -168,9 +138,9 @@ position: absolute;">invia il quiz per email copiando l'url</div>
     height: 25em;
     display: absolute;
    ">
-            Grazie per aver partecipato al quiz verrai ricontattato al più presto per aggiornamenti
-        </div>
+      Grazie per aver partecipato al quiz verrai ricontattato al più presto per aggiornamenti
     </div>
+  </div>
 
 
 </div>

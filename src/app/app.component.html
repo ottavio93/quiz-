@@ -13,7 +13,7 @@
     
     
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      <li class="bottone">
+      <li class="bottone"  *ngIf="showModeratorBoard || showAdminBoard" >
         <a href="/home" class="nav-link" routerLink="home"routerLinkActive="active">Home </a>
 
 
@@ -39,7 +39,9 @@
         <a  class="nav-link"  routerLink="/quizReport" routerLinkActive="active">all reports</a>
       </li>
      
-   
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a class="nav-link" routerLink="/quizUserReport" routerLinkActive="active">{{ username }} reports</a>
+      </li>
 
 
    
@@ -47,16 +49,16 @@
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn && dati " routerLinkActive="active">
       
-      <li class="nav-item">
-        <a href="/login" class="nav-link"   *ngIf="datasource"            routerLink="login"routerLinkActive="active">Login</a>
-      </li>
+      <!-- <li class="nav-item">
+        <a href="/login" class="nav-link"            routerLink="login"routerLinkActive="active">Login</a>
+      </li> -->
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
+      <li class="nav-item"  *ngIf="showModeratorBoard || showAdminBoard">
         <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"  *ngIf="showModeratorBoard || showAdminBoard">
         <a href class="nav-link" (click)="logout()">LogOut</a>
       </li>
     </ul>
