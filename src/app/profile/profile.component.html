@@ -36,7 +36,7 @@ utenti
     <tr>
       <th>username</th>
       <th>email</th>
-
+      <th>abilitato</th>
    
 
     </tr>
@@ -50,7 +50,9 @@ utenti
   <td>{{ item.username }}</td>
     <td>{{ item.email }}</td>
    
-
+    <td> <button (click)="disabledUser(item.username)" *ngIf="item.enabled">abiliatato</button>
+       <button (click)="enabledUser(item.username)"  *ngIf="!item.enabled">disabilitato</button> 
+    </td>
 
 
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EnableUserRequest } from '../dto/EnableUserRequest';
+import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
 
@@ -12,7 +14,8 @@ export class ProfileComponent implements OnInit {
   alluser: [];
   constructor(
     private userService: UserService,
-    private token: TokenStorageService
+    private token: TokenStorageService,
+    private authService :AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -22,4 +25,26 @@ export class ProfileComponent implements OnInit {
       console.log(this.alluser);
     });
   }
+
+  disabledUser(username:string) {
+  
+  let model2=new EnableUserRequest(username);
+        this.authService.disableUser(model2).subscribe((data)=>{
+          console.log(username);
+          location.reload();
+       
+        });
+      }
+ enabledUser(username:string) {
+  
+  let model2=new EnableUserRequest(username);
+        this.authService.enableUser(model2).subscribe((data)=>{
+          console.log(username);
+          location.reload();
+       
+        });
+      }
+
+
+
 }

@@ -60,5 +60,14 @@ export class AuthService {
       httpOptions
     );
   }
-
+  enableUser(EnableUserRequest: EnableUserRequest): Observable<any> {
+    return this.http.post(
+      API_URL + '/enableUser',
+      {
+        username: EnableUserRequest.username,
+    
+      },
+      httpOptions
+    );
+  }
 }
