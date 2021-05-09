@@ -59,9 +59,7 @@ export class GuestFormComponent
       localStorage.setItem('sss', '4');
       location.reload();
     }
-    this.nome = this.tokenStorage.getUser().username;
-    console.log(this.nome)
-    this.model2=new EnableUserRequest(this.nome);
+
 
   }
 
@@ -71,6 +69,9 @@ export class GuestFormComponent
   submitted = false;
 
   onSubmit() {
+    this.nome = this.tokenStorage.getUser().username;
+    console.log(this.nome)
+    this.model2=new EnableUserRequest(this.nome);
     this.submitted = true;
     console.log(this.playQuizIdRandom);
     console.log(this.model2);
