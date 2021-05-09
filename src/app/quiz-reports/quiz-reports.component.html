@@ -15,6 +15,7 @@ padding-left: 0em;padding-right: 0em;  width: 100%;     margin-left: -9%;   marg
                 <th>giudizioPsicologico</th>
                 <th>giudizioglobale</th>
                 <th>approvato</th>
+                <th>data creazione</th>
             </tr>
          
         </thead>
@@ -31,6 +32,7 @@ padding-left: 0em;padding-right: 0em;  width: 100%;     margin-left: -9%;   marg
                 <td>{{ item.giudizioGlobale }}</td>
                 <td *ngIf="item.approvato">vero</td>
                 <td *ngIf="!item.approvato">falso</td>
+                <td>{{ item.created }}</td>
             </tr>
         </tbody>
     </table>

@@ -82,7 +82,10 @@ export class GuestFormComponent
     });
   this.mostraformcredenziali=false
   this.stateChange(-1)
-
+  this.authService.disableUser(this.model2).subscribe((data)=>{
+    console.log(data);
+    console.log(this.model2);
+  });
   }
 
   randomId() {
