@@ -3,16 +3,16 @@
     <h3>
   Profilo     <strong>{{ currentUser.username }}</strong>
     </h3>
-    <p>
-      <strong>Email:</strong>
-      {{ currentUser.email }}
-    </p>
-    <strong>Ruoli:</strong>
-    <ul>
-      <li *ngFor="let role of currentUser.roles">
-        {{ role }}
-      </li>
-    </ul>
+     <p>
+    <strong>Email:</strong>
+    {{ currentUser.email }}
+  </p>
+  <strong>Ruoli:</strong>
+  <ul>
+    <li *ngFor="let role of currentUser.roles">
+      {{ role }}
+    </li>
+  </ul>
   </header>
   <!-- <p>
     <strong>Token:</strong>
