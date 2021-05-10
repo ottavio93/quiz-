@@ -19,7 +19,7 @@
 
         </thead>
         <tbody>
-            <tr *ngFor="let item of allReports ;  let numb of allPunteggio; index as i
+            <tr  class="dtr" *ngFor="let item of allReports ;  let numb of allPunteggio; index as i
             " [routerLink]="['/detailquizReport', item.playQuizId]">
                 <td>{{ item.nome }}</td>
                 <td>{{ item.cognome }}</td>

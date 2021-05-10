@@ -6,7 +6,7 @@ padding-left: 0em;padding-right: 0em;  width: 100%;     margin-left: -9%;   marg
 
         <thead >
      
-            <tr style=" display: contents ;position:fixed ;">
+            <tr class="dtr" style=" display: contents ;position:fixed ;">
                 <th>nome</th>
                 <th>cognome</th>
 
@@ -20,7 +20,7 @@ padding-left: 0em;padding-right: 0em;  width: 100%;     margin-left: -9%;   marg
          
         </thead>
         <tbody>
-            <tr *ngFor="let item of allReports ;  let numb of allPunteggio; index as i
+            <tr  class="dtr" *ngFor="let item of allReports ;  let numb of allPunteggio; index as i
             " [routerLink]="['/detailquizReport', item.playQuizId]">
                 <td>{{ item.nome }}</td>
                 <td>{{ item.cognome }}</td>

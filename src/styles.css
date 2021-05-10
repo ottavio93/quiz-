@@ -17,3 +17,6 @@ body {
 .container {
   margin-top: 4%;
 }
+tr:hover{
+  background: #38569e5e;
+}

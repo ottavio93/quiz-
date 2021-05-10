@@ -5,9 +5,9 @@ table {
 }
 
 /* Zebra striping */
-tr:nth-of-type(odd) {
+/* tr:nth-of-type(odd) {
   background: #eee;
-}
+} */
 
 th {
   background: #38569e;
@@ -85,5 +85,8 @@ and also iPads specifically.
   .bottone.active {
     border: none;
     color: rgb(26, 16, 117);
+  }
+  .dtr:hover{
+    background: #38569e5e;
   }
 }

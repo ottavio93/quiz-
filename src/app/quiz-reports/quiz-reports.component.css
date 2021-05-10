@@ -5,9 +5,7 @@ table {
 }
 
 /* Zebra striping */
-tr:nth-of-type(odd) {
-  background: #eee;
-}
+
 
 th {
   background: #38569e;
@@ -76,5 +74,8 @@ and also iPads specifically.
 
     color: #000;
     font-weight: bold;
+  }
+  .dtr:hover{
+    background: #38569e5e;
   }
 }

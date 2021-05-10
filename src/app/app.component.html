@@ -28,18 +28,16 @@
       <li class="bottone" *ngIf="showModeratorBoard || showAdminBoard">
         <a href="/mod" class="nav-link" routerLink="aggiungi-utente" routerLinkActive="active">aggiungi-utente</a>
       </li>
-      <li class="nav-item" *ngIf="showModeratorBoard">
-        <a class="nav-link" routerLink="/quizUserReport" routerLinkActive="active">{{ username }} reports</a>
-      </li>
+    
       <li class="nav-item">
-        <a href="/user" class="nav-link" *ngIf="showModeratorBoard" routerLink="user"routerLinkActive="active"> {{ username }} quiz </a>
+        <a href="/user" class="nav-link" *ngIf="showAdminBoard || showAdminBoard" routerLink="user"routerLinkActive="active"> {{ username }} quiz </a>
       </li>
 
       <li class="nav-item" *ngIf="showAdminBoard">
         <a  class="nav-link"  routerLink="/quizReport" routerLinkActive="active">all reports</a>
       </li>
      
-      <li class="nav-item" *ngIf="showAdminBoard">
+      <li class="nav-item" *ngIf="showAdminBoard || showAdminBoard">
         <a class="nav-link" routerLink="/quizUserReport" routerLinkActive="active">{{ username }} reports</a>
       </li>
 
