@@ -30,14 +30,14 @@
       </li>
     
       <li class="nav-item">
-        <a href="/user" class="nav-link" *ngIf="showAdminBoard || showAdminBoard" routerLink="user"routerLinkActive="active"> {{ username }} quiz </a>
+        <a href="/user" class="nav-link" *ngIf="showModeratorBoard || showAdminBoard" routerLink="user"routerLinkActive="active"> {{ username }} quiz </a>
       </li>
 
       <li class="nav-item" *ngIf="showAdminBoard">
         <a  class="nav-link"  routerLink="/quizReport" routerLinkActive="active">all reports</a>
       </li>
      
-      <li class="nav-item" *ngIf="showAdminBoard || showAdminBoard">
+      <li class="nav-item" *ngIf="showModeratorBoard || showAdminBoard">
         <a class="nav-link" routerLink="/quizUserReport" routerLinkActive="active">{{ username }} reports</a>
       </li>
 
