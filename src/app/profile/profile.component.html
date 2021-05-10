@@ -1,24 +1,25 @@
 <div class="container" *ngIf="currentUser; else loggedOut">
   <header class="jumbotron">
     <h3>
-      <strong>{{ currentUser.username }}</strong> Profile
+  Profilo     <strong>{{ currentUser.username }}</strong>
     </h3>
+    <p>
+      <strong>Email:</strong>
+      {{ currentUser.email }}
+    </p>
+    <strong>Ruoli:</strong>
+    <ul>
+      <li *ngFor="let role of currentUser.roles">
+        {{ role }}
+      </li>
+    </ul>
   </header>
-  <p>
+  <!-- <p>
     <strong>Token:</strong>
     {{ currentUser.accessToken.substring(0, 20) }} ...
     {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
-  </p>
-  <p>
-    <strong>Email:</strong>
-    {{ currentUser.email }}
-  </p>
-  <strong>Roles:</strong>
-  <ul>
-    <li *ngFor="let role of currentUser.roles">
-      {{ role }}
-    </li>
-  </ul>
+  </p> -->
+ 
 </div>
 
 <ng-template #loggedOut>
@@ -28,7 +29,7 @@
 
 <div class="container" style="margin-top: 2%;">
 <h3 style="margin: 0%;"><strong>
-utenti
+  utenti registrati
 </strong></h3>
 <table style="margin: 0%;">
 
@@ -36,6 +37,7 @@ utenti
     <tr>
       <th>username</th>
       <th>email</th>
+      <th>ruolo</th>
       <th>abilitato</th>
    
 
@@ -49,6 +51,7 @@ utenti
 
   <td>{{ item.username }}</td>
     <td>{{ item.email }}</td>
+    <td>{{ item.roles[0].name }}</td>
    
     <td> <button (click)="disabledUser(item.username)" *ngIf="item.enabled">abiliatato</button>
        <button (click)="enabledUser(item.username)"  *ngIf="!item.enabled">disabilitato</button> 
