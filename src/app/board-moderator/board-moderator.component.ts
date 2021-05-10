@@ -13,6 +13,7 @@ export class BoardModeratorComponent implements OnInit {
   content: string;
   currentUser: any;
   alluser: [];
+  admin="ROLE_ADMIN"
  
   constructor(private userService: UserService,  
      private authService :AuthService, private token: TokenStorageService) {}

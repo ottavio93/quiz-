@@ -10,10 +10,12 @@ import { UserService } from '../_services/user.service';
 export class HomeComponent implements OnInit {
   showAdminBoard = false;
   content: string;
+  isLoggedIn = false;
   private roles: string[];
   constructor(private userService: UserService,private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.tokenStorageService.getUser()!=null;
     const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
 

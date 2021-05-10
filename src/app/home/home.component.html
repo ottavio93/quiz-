@@ -1,8 +1,10 @@
 <div class="container" style="width: 37%;">
   <header class="jumbotron">
     <h1 style="TEXT-ALIGN: center;">Gestionale quiz di tsi  </h1>
-   <div style="TEXT-ALIGN: center;"><a  href="/login" style="TEXT-ALIGN: center;" >Login</a></div> 
-   <a href class="nav-link" (click)="logout()">LogOut</a>
+  
+  <div   style="TEXT-ALIGN: center;"><a  href="/login" style="TEXT-ALIGN: center;" >Login</a></div> 
+  <div *ngIf="isLoggedIn" style="TEXT-ALIGN: center;">   <a href class="nav-link" (click)="logout()">LogOut</a></div>
+
     <div style="TEXT-ALIGN: center;" *ngIf="showAdminBoard" ><a href="/register909!"  >aggiungi moderatore</a></div>
  
   </header>

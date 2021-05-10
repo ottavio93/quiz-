@@ -12,6 +12,7 @@ import { UserService } from '../_services/user.service';
 export class ProfileComponent implements OnInit {
   currentUser: any;
   alluser: [];
+  admin="ROLE_ADMIN"
   constructor(
     private userService: UserService,
     private token: TokenStorageService,
