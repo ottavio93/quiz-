@@ -42,11 +42,11 @@ export class PartecipaQuizComponent implements OnInit {
   roles: string[] = [];
   showAdminBoard = false;
   showModeratorBoard = false;
-  @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
-    console.log('Processing beforeunload...');
-    event.returnValue = false;
-    this.isLoggedIn=false
-  }
+  // @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
+  //   console.log('Processing beforeunload...');
+  //   event.returnValue = false;
+  //   this.isLoggedIn=false
+  // }
 
   // @HostListener('window:beforeunload', ['$event'])
   // unloadNotification($event: any) {
