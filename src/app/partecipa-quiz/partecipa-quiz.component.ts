@@ -42,11 +42,11 @@ export class PartecipaQuizComponent implements OnInit {
   roles: string[] = [];
   showAdminBoard = false;
   showModeratorBoard = false;
-  // @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
-  //   console.log('Processing beforeunload...');
-  //   event.returnValue = false;
-  //   this.isLoggedIn=false
-  // }
+  @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
+    console.log('Processing beforeunload...');
+    event.returnValue = false;
+    this.isLoggedIn=false
+  }
 
   // @HostListener('window:beforeunload', ['$event'])
   // unloadNotification($event: any) {
@@ -75,7 +75,7 @@ mostraform1=false
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorage.getToken();
-    this.mostraform1=false;
+
 console.log(this.isLoggedIn)
     if (this.isLoggedIn) {
       const user = this.tokenStorage.getUser();
@@ -239,7 +239,7 @@ console.log(this.isLoggedIn)
     '',
     ''
   );
-  onSubmit(idq: any, left: number) {
+  onSubmitF(idq: any, left: number) {
     console.log(left);
     this.answerResponse.answerId = this.randomId();
     this.answerResponse.tempo = left;
