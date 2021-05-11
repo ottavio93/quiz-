@@ -30,3 +30,16 @@ label {
     -webkit-border-radius: 50%;
     border-radius: 50%;
   }
+  form {
+    display: -webkit-inline-box;
+    margin-top: 0em;
+}
+.card{
+  max-width: 4000px;
+  padding: 0px 0px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #38569e;
+  border-color: transparent;
+}

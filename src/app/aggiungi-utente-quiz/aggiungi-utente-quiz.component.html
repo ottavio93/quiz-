@@ -1,5 +1,6 @@
-<div class="col-md-12">
-    <div class="card card-container">
+<div class="col-md-12" style="background: #38569e40;">
+    <div style="max-width: 4000px;
+    padding: 0px 0px;" >
      
       <form
         *ngIf="!isSuccessful"
@@ -66,8 +67,13 @@
             </div>
           </div>
         </div>
+        <br>
+
+
+        
         <div class="form-group">
-          <button class="btn btn-primary btn-block">Aggiungi utente</button>
+          <button class="btn btn-primary btn-block" style="margin-top: 68%;
+          margin-left: -456%;">Aggiungi utente</button>
         </div>
   
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
@@ -78,6 +84,8 @@
       <div class="alert alert-success" *ngIf="isSuccessful">
         Your registration is successful!
       </div>
+
+      
     </div>
   </div>
   

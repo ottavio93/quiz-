@@ -24,7 +24,7 @@ export class TutteRisposteComponent implements OnInit {
     this.answerDelete = {
       answerId: id,
     };
-
+console.log( this.answerDelete)
     this.quizService.answerDelete(this.answerDelete).subscribe((data) => {
       console.log(data);
       this.ngOnInit();
